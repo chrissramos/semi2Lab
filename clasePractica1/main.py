@@ -1,7 +1,7 @@
 
 from extract import extract
 from transform import transform
-
+from load import load
 
 def main ():
     print ("Hello World!")
@@ -16,7 +16,7 @@ def main ():
             print("5. Cargar datos")
             print("6. Realizar Consultas")
             print("7. Salir")
-
+            # C:\Users\Randall\Documents\U\Pract. Finales\Semi2\Repo Lab\semi2Lab\clasePractica1\VuelosDataSet.csv
             option = input("Opción: ")
 
             if option == "1":
@@ -42,8 +42,12 @@ def main ():
                     transformed_data = transform(df)
                     print("Datos transformados correctamente.")
                 input("Presione Enter para continuar...")
-            # elif option == "5":
-            #     load(data)
+            elif option == "5":
+                if transformed_data is None:
+                    print("Primero debes transformar los datos (opción 4).")
+                else:
+                    load(transformed_data)
+                input("Presione Enter para continuar...")
             elif option == "6":
                 print("Realizando consultas...")
             elif option == "7":
