@@ -1,4 +1,7 @@
 
+from extract import extract
+from transform import transform
+
 
 def main ():
     print ("Hello World!")
@@ -18,12 +21,27 @@ def main ():
 
             if option == "1":
                 print("Borrando tablas...")
+                # Aquí iría el código para borrar el modelo
+                input("Presione Enter para continuar...")
             elif option == "2":
                 print("Creando tablas...")
-            # elif option == "3":
-            #     df = extract()
-            # elif option == "4":
-            #     data = transform(df)
+                # Aquí iría el código para crear el modelo (ejecutar scripts SQL, etc.)
+                input("Presione Enter para continuar...")
+            elif option == "3":
+                df = extract()
+                if df is not None:
+                    print("Datos extraídos correctamente.")
+                else:
+                    print("No se pudo extraer la información.")
+                input("Presione Enter para continuar...")
+
+            elif option == "4":
+                if df is None:
+                    print("Primero debes extraer los datos (opción 3).")
+                else:
+                    transformed_data = transform(df)
+                    print("Datos transformados correctamente.")
+                input("Presione Enter para continuar...")
             # elif option == "5":
             #     load(data)
             elif option == "6":
