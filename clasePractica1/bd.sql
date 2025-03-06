@@ -6,9 +6,9 @@ GO
 USE FlightDataWarehouse;
 GO
 
--- Crear la tabla de dimensión para Pasajeros
+-- Crear la tabla de dimensión para Pasajeros (PassengerID ahora es NVARCHAR)
 CREATE TABLE DimPassenger (
-    PassengerID INT PRIMARY KEY,
+    PassengerID NVARCHAR(50) PRIMARY KEY,
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
     Gender NVARCHAR(10),
@@ -60,9 +60,10 @@ CREATE TABLE DimFlightStatus (
 GO
 
 -- Crear la tabla de hechos: FactFlight
+-- FactID es auto-incrementable y PassengerID es NVARCHAR para admitir valores alfanuméricos.
 CREATE TABLE FactFlight (
-    FactID INT PRIMARY KEY,
-    PassengerID INT,
+    FactID INT IDENTITY(1,1) PRIMARY KEY,
+    PassengerID NVARCHAR(50),
     DepartureDateID INT,
     DepartureAirportID INT,
     ArrivalAirportID INT,
